@@ -1,35 +1,35 @@
-POLYMC(1)
+POLLYMC(1)
 ==========
 :doctype: manpage
 
 
 NAME
 ----
-polymc - a launcher and instance manager for Minecraft.
+pollymc - a launcher and instance manager for Minecraft.
 
 
 SYNOPSIS
 --------
-*polymc* ['OPTIONS']
+*pollymc* ['OPTIONS']
 
 
 DESCRIPTION
 -----------
-PolyMC is a custom launcher for Minecraft that allows you to easily manage
+PollyMC is a custom launcher for Minecraft that allows you to easily manage
 multiple installations of Minecraft at once. It also allows you to easily
 install and remove mods by simply dragging and dropping.
-Here are the current features of PolyMC.
+Here are the current features of PollyMC.
 
 OPTIONS
 -------
 *-d, --dir*='DIRECTORY'::
-    Use 'DIRECTORY' as the PolyMC root.
+    Use 'DIRECTORY' as the PollyMC root.
 
 *-l, --launch*='INSTANCE_ID'::
     Launch the instance specified by 'INSTANCE_ID'.
 
 *--alive*::
-    Write a small 'live.check' file after PolyMC starts.
+    Write a small 'live.check' file after PollyMC starts.
 
 *-h, --help*::
     Display help text and exit.
@@ -49,16 +49,15 @@ EXIT STATUS
 
 BUGS
 ----
-<https://github.com/PolyMC/PolyMC/issues>
+<https://github.com/fn2006/PollyMC/issues>
 
 RESOURCES
 ---------
-GitHub: <https://github.com/PolyMC/PolyMC>
-
-Main website: <https://polymc.org>
+GitHub: <https://github.com/fn2006/PollyMC>
 
 AUTHORS
 -------
 PolyMC Contributors
+fn2006
 
 // vim: syntax=asciidoc
