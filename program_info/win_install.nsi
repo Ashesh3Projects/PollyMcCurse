@@ -4,9 +4,9 @@
 
 Unicode true
 
-Name "PolyMC"
-InstallDir "$LOCALAPPDATA\Programs\PolyMC"
-InstallDirRegKey HKCU "Software\PolyMC" "InstallDir"
+Name "PollyMC"
+InstallDir "$LOCALAPPDATA\Programs\PollyMC"
+InstallDirRegKey HKCU "Software\PollyMC" "InstallDir"
 RequestExecutionLevel user
 
 ;--------------------------------
@@ -18,7 +18,7 @@ RequestExecutionLevel user
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
-!define MUI_FINISHPAGE_RUN "$InstDir\polymc.exe"
+!define MUI_FINISHPAGE_RUN "$InstDir\pollymc.exe"
 !insertmacro MUI_PAGE_FINISH
 
 !insertmacro MUI_UNPAGE_CONFIRM
@@ -99,15 +99,15 @@ RequestExecutionLevel user
 ;--------------------------------
 
 ; The stuff to install
-Section "PolyMC"
+Section "PollyMC"
 
   SectionIn RO
 
-  nsExec::Exec /TIMEOUT=2000 'TaskKill /IM polymc.exe /F'
+  nsExec::Exec /TIMEOUT=2000 'TaskKill /IM pollymc.exe /F'
 
   SetOutPath $INSTDIR
 
-  File "polymc.exe"
+  File "pollymc.exe"
   File "qt.conf"
   File *.dll
   File /r "iconengines"
@@ -117,19 +117,19 @@ Section "PolyMC"
   File /r "styles"
 
   ; Write the installation path into the registry
-  WriteRegStr HKCU Software\PolyMC "InstallDir" "$INSTDIR"
+  WriteRegStr HKCU Software\PollyMC "InstallDir" "$INSTDIR"
 
   ; Write the uninstall keys for Windows
   ${GetParameters} $R0
   ${GetOptions} $R0 "/NoUninstaller" $R1
   ${If} ${Errors}
-    !define UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\PolyMC"
-    WriteRegStr HKCU "${UNINST_KEY}" "DisplayName" "PolyMC"
-    WriteRegStr HKCU "${UNINST_KEY}" "DisplayIcon" "$INSTDIR\polymc.exe"
+    !define UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\PollyMC"
+    WriteRegStr HKCU "${UNINST_KEY}" "DisplayName" "PollyMC"
+    WriteRegStr HKCU "${UNINST_KEY}" "DisplayIcon" "$INSTDIR\pollymc.exe"
     WriteRegStr HKCU "${UNINST_KEY}" "UninstallString" '"$INSTDIR\uninstall.exe"'
     WriteRegStr HKCU "${UNINST_KEY}" "QuietUninstallString" '"$INSTDIR\uninstall.exe" /S'
     WriteRegStr HKCU "${UNINST_KEY}" "InstallLocation" "$INSTDIR"
-    WriteRegStr HKCU "${UNINST_KEY}" "Publisher" "PolyMC Contributors"
+    WriteRegStr HKCU "${UNINST_KEY}" "Publisher" "PollyMC Contributors"
     WriteRegStr HKCU "${UNINST_KEY}" "ProductVersion" "${VERSION}"
     ${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
     IntFmt $0 "0x%08X" $0
@@ -143,13 +143,13 @@ SectionEnd
 
 Section "Start Menu Shortcut" SM_SHORTCUTS
 
-  CreateShortcut "$SMPROGRAMS\PolyMC.lnk" "$INSTDIR\polymc.exe" "" "$INSTDIR\polymc.exe" 0
+  CreateShortcut "$SMPROGRAMS\PollyMC.lnk" "$INSTDIR\pollymc.exe" "" "$INSTDIR\pollymc.exe" 0
 
 SectionEnd
 
 Section "Desktop Shortcut" DESKTOP_SHORTCUTS
 
-  CreateShortcut "$DESKTOP\PolyMC.lnk" "$INSTDIR\polymc.exe" "" "$INSTDIR\polymc.exe" 0
+  CreateShortcut "$DESKTOP\PollyMC.lnk" "$INSTDIR\pollymc.exe" "" "$INSTDIR\pollymc.exe" 0
 
 SectionEnd
 
@@ -159,12 +159,12 @@ SectionEnd
 
 Section "Uninstall"
 
-  nsExec::Exec /TIMEOUT=2000 'TaskKill /IM polymc.exe /F'
+  nsExec::Exec /TIMEOUT=2000 'TaskKill /IM pollymc.exe /F'
 
-  DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\PolyMC"
-  DeleteRegKey HKCU SOFTWARE\PolyMC
+  DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\PollyMC"
+  DeleteRegKey HKCU SOFTWARE\PollyMC
 
-  Delete $INSTDIR\polymc.exe
+  Delete $INSTDIR\pollymc.exe
   Delete $INSTDIR\uninstall.exe
   Delete $INSTDIR\portable.txt
 
@@ -220,8 +220,8 @@ Section "Uninstall"
   RMDir /r $INSTDIR\platforms
   RMDir /r $INSTDIR\styles
 
-  Delete "$SMPROGRAMS\PolyMC.lnk"
-  Delete "$DESKTOP\PolyMC.lnk"
+  Delete "$SMPROGRAMS\PollyMC.lnk"
+  Delete "$DESKTOP\PollyMC.lnk"
 
   RMDir "$INSTDIR"
 
