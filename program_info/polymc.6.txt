@@ -58,6 +58,7 @@ GitHub: <https://github.com/fn2006/PollyMC>
 AUTHORS
 -------
 PolyMC Contributors
+
 fn2006
 
 // vim: syntax=asciidoc
