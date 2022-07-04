@@ -6,7 +6,7 @@ on:
       build_type:
         description: Type of build (Debug, Release, RelWithDebInfo, MinSizeRel)
         type: string
-        default: Debug
+        default: Release
 
 jobs:
   build:
@@ -14,22 +14,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-
-          - os: ubuntu-20.04
-
-          - os: ubuntu-20.04
-            appimage: true
-
-          - os: windows-2022
-            name: "Windows-i686"
-            msystem: mingw32
-
           - os: windows-2022
             name: "Windows-x86_64"
             msystem: mingw64
 
-          - os: macos-11
-            macosx_deployment_target: 10.13
+
 
     runs-on: ${{ matrix.os }}
 
